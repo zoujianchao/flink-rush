@@ -1,6 +1,5 @@
 package com.zjc.stream.wc;
 
-import org.apache.flink.api.java.operators.AggregateOperator;
 import org.apache.flink.api.java.tuple.Tuple2;
 import org.apache.flink.streaming.api.datastream.DataStreamSource;
 import org.apache.flink.streaming.api.datastream.SingleOutputStreamOperator;
@@ -10,7 +9,7 @@ import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
  * @author : zoujianchao
  * @version : 1.0
  * @date : 2021/12/13
- * @description : 批处理wc
+ * @description : 有状态的流处理wc
  */
 public class WordCount {
     public static void main(String[] args) throws Exception{
