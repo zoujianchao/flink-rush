@@ -15,6 +15,8 @@ public class WordCount {
     public static void main(String[] args) throws Exception{
         //创建执行环境
         StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();
+        //设置并行度
+        env.setParallelism(3);
         //从文件中读取数据
         String inputPath = "E:\\mylocal\\flink-rush\\src\\main\\resources\\hello.txt";
         DataStreamSource<String> inputDataStream = env.readTextFile(inputPath);
