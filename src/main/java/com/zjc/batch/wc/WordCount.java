@@ -1,4 +1,4 @@
-package com.zjc.wc;
+package com.zjc.batch.wc;
 
 import org.apache.flink.api.common.functions.FlatMapFunction;
 import org.apache.flink.api.java.DataSet;
