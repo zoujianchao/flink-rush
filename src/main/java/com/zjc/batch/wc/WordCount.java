@@ -4,10 +4,12 @@ import org.apache.flink.api.common.functions.FlatMapFunction;
 import org.apache.flink.api.java.DataSet;
 import org.apache.flink.api.java.ExecutionEnvironment;
 import org.apache.flink.api.java.operators.AggregateOperator;
+import org.apache.flink.api.java.operators.DataSource;
 import org.apache.flink.api.java.tuple.Tuple2;
 import org.apache.flink.util.Collector;
 
 import java.util.Arrays;
+import java.util.List;
 
 /**
  * @author : zoujianchao
@@ -20,8 +22,10 @@ public class WordCount {
         //创建执行环境
         ExecutionEnvironment env = ExecutionEnvironment.getExecutionEnvironment();
         //从文件中读取数据
-        String inputPath = "E:\\mylocal\\flink-rush\\src\\main\\resources\\hello.txt";
-        DataSet<String> inputDataSet = env.readTextFile(inputPath);
+//        String inputPath = "E:\\mylocal\\flink-rush\\src\\main\\resources\\hello.txt";
+//        DataSet<String> inputDataSet = env.readTextFile(inputPath);
+        List<String> elements = Arrays.asList("hello world good hello job flink hello job hello flink spark");
+        DataSource<String> inputDataSet = env.fromCollection(elements);
         //对数据集进行处理
         AggregateOperator<Tuple2<String, Integer>> operator = inputDataSet.flatMap(new MyFlatMapper())
                 .groupBy(0) //按照第一个位置的word分组
@@ -41,4 +45,6 @@ public class WordCount {
             });
         }
     }
+   
 }
+
